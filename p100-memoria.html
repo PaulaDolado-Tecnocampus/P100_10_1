@@ -1,0 +1,86 @@
+<html lang="cat">
+<head>
+    <meta charset="utf-8">
+    <title>Juego de Cartas</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/jquery-ui.min.css">
+    <link rel="stylesheet" href="css/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/introjs.min.css">
+
+    <script src="js/jquery-3.7.1.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/introjs.min.js"></script>
+
+    <script src="js/p100-memoria.js"></script>
+    <script src="js/musica.js" defer></script>
+
+</head>
+<body>
+
+    <i id="mc-mute" class="bi bi-volume-up-fill"></i>
+    <i id="ayuda" class="bi bi-question-circle-fill"></i>
+
+    <div id="tiempo">
+        <h2>Tiempo restante:</h2>
+        <h3 id="cuentaAtras"></h3>
+    </div>
+    
+    <div id="finestraWin" class="finestra">
+        <div class="contingut">
+            <h1>¡Enorabuena! ¡Has ganado!</h1>
+            <p id="completado"></p>
+            <img src="images/win.jpg" alt="Guanyador">
+            <button class="novaPartida" >Vuelve a Jugar</button> 
+        </div>
+        
+    </div>
+    <div id="finestraLose" class="finestra">
+        <div class="contingut">
+            <h1>¡Una lástima! ¡Has perdido!</h1>
+            <p>Has agotado el tiempo o los intentos.</p>
+            <img src="images/lost.jpeg" alt="Perdedor">
+            <button class="novaPartida">Vuelve a Jugar</button> 
+        </div>
+    </div>
+    
+<header>
+    <h1 style="margin-top: 2rem;">Memoria cartas</h1>
+</header>
+
+<div class="wrap">
+    <div id="estado"></div>
+    <div id="menu" class="dialogoMenu">
+        <div class="contenidoMenu">
+            <div class="menu-header">Seleccione un nivel de dificultad</div>
+            <div id="menu-body" class="menu-body">
+                <div id="dificultadBtn" class="menu-body">
+                    <button id="facil" class="btn">Fácil</button>
+                    <button id="medio" class="btn">Medio</button>
+                    <button id="dificil" class="btn">Difícil</button>
+
+                    <div id="puntuacion" class="puntuacion"></div>
+                </div>    
+            </div>
+        </div>    
+    </div>
+
+    <div id="tauler" style="display: none;"></div>
+
+    <div style="visibility: hidden;" id="musica">
+        <h2 id="mc-title">Títol</h2>
+        <div class="music-controls">
+            <i id="mc-back" class="bi bi-skip-backward-fill"></i>
+            <i id="mc-main" class="bi bi-pause-circle-fill"></i>
+            <i id="mc-forw" class="bi bi-skip-forward-fill"></i>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <p>Bienvenidos al juego de cartas</p>
+</footer>
+
+</body>
+</html>
