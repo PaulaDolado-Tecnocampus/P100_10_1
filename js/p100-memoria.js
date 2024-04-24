@@ -12,7 +12,7 @@ var divTablero = null;
 var ventanaWin = null;
 var ventanaLose = null;
 var timeout = null;
-var contador = 60;
+var contador = 0;
 var tiempo = null;
 var ultimotiempoRegistrado = 0;
 
@@ -24,6 +24,17 @@ function mezclarArray(array) {
         array[i] = array[j];
         array[j] = temp;
     }
+}
+
+function Temporizador(numCartas){
+    if(numCartas==16){
+        contador = 60;
+    }else if (numCartas==24){
+        contador = 90;
+    }else{
+        contador = 120;
+    }
+    return contador;
 }
 
 function empezarJuego(cartas, numCols) {
@@ -75,8 +86,9 @@ function empezarJuego(cartas, numCols) {
 
     const gameStartEvent = new CustomEvent("gameStart");
     document.dispatchEvent(gameStartEvent);
-
+    contador= Temporizador(numCartas);
 }
+
 
 function acierto(carta) {
     carta.off("click");
@@ -143,15 +155,16 @@ function cartaClick(carta) {
     } else {
         cartaSeleccionada = carta;
     }
-    if (numClicks == 1){
+    if (numClicks == 1){ /*Temporitzador*/
+        
         timeout = setInterval(function(){
             if(contador==0){
                 numClicks = numCartas*3;
                 clearInterval(timeout);
             }else{
                 tiempo.addClass("iniciado");
-                $("#cuentaAtras").html(contador + " segundos");
                 contador = contador-1;
+                $("#cuentaAtras").html(contador + " segundos");
             }
             finalizar();
         }, 1000); 
