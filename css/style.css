@@ -230,8 +230,7 @@ body {
 }
 #tiempo.iniciado{
     display: flex;
-    position: absolute;
-    z-index: 1;
+    position: fixed;
     padding: 50px;
     flex-direction: column;
 }
