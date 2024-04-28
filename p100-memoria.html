@@ -11,22 +11,25 @@
     <script src="js/jquery-3.7.1.js"></script>
     <script src="js/jquery-ui.min.js"></script>
     <script src="js/introjs.min.js"></script>
+    <script src="js/particles.min.js"></script>
 
     <script src="js/p100-memoria.js"></script>
-    <script src="js/musica.js" defer></script>
+    <script src="js/musica.js"></script>
 
 </head>
-<body>
+<body id="particles-js">
 
     <i id="mc-mute" class="bi bi-volume-up-fill"></i>
-    <i id="ayuda" class="bi bi-question-circle-fill"></i>
+    <i id="ayuda" class="bi bi-question-circle-fill"></i>   
     
     <div id="finestraWin" class="finestra">
         <div class="contingut">
             <h1>¡Enorabuena! ¡Has ganado!</h1>
             <p id="completado"></p>
+            <p>¡Has conseguido <span id="numEstrellas"></span> estrella/s!</p>
+            <p><span id="estrellas"></span></p> 
             <img src="images/win.jpg" alt="Guanyador">
-            <button class="novaPartida" >Vuelve a Jugar</button> 
+            <button class="btn" id ="reloadWin" style="margin-top: 1rem;">Volver a jugar</button> 
         </div>
         
     </div>
@@ -35,19 +38,19 @@
             <h1>¡Una lástima! ¡Has perdido!</h1>
             <p>Has agotado el tiempo o los intentos.</p>
             <img src="images/lost.jpeg" alt="Perdedor">
-            <button class="novaPartida">Vuelve a Jugar</button> 
+            <button class="btn" id ="reloadLose" style="margin-top: 1rem;">Volver a jugar</button> 
         </div>
     </div>
     
 <header>
-    <h1 style="padding-top: 2rem;">Memoria cartas</h1>
+    <h1 style="margin-top: 2rem;">Memoria cartas</h1>
 </header>
 
 <div class="wrap">
     <div id="estado">
         <div id="tiempo">
-            <h2>Tiempo restante:</h2>
-            <h3 id="cuentaAtras"></h3>
+            <h4>Tiempo restante</h4>
+            <h2 id="cuentaAtras"></h2>
         </div>
     </div>
     <div id="menu" class="dialogoMenu">
@@ -58,9 +61,15 @@
                     <button id="facil" class="btn">Fácil</button>
                     <button id="medio" class="btn">Medio</button>
                     <button id="dificil" class="btn">Difícil</button>
+                </div>
+            <div id="otherBtn" class="menu-body">
+                
+            </div>
+            </div>
 
-                    <div id="puntuacion" class="puntuacion"></div>
-                </div>    
+            <div class="menu-sel-deck">
+                <i data-name="poker" class="decksel bi bi-suit-spade-fill selected"></i>
+                <img data-name="pokemon" class="decksel" src="images/pokeball.svg" alt="">
             </div>
         </div>    
     </div>

@@ -7,6 +7,14 @@ body {
     margin: 0px;
 }
 
+.particles-js-canvas-el {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    pointer-events: none;
+    z-index: -1;
+}
+
 .wrap {
     display: flex;
 }
@@ -34,9 +42,6 @@ body {
 }
 
 .carta {
-    width: 80px;	height: 120px;   /* deck */
-    /* width: 111px; height: 111px;  /* pokemon */
-    /* width: 79px;	height: 123px;   /* poker1 */
 
     -webkit-perspective: 300px; /* Chrome, Safari, Opera  */
     perspective: 300px;/*transition: all .3s; */
@@ -44,6 +49,14 @@ body {
     transition: opacity ease-in-out 1s, transform ease-in-out .5s;
 
     transform: none;
+}
+
+.carta.poker {
+    width: 80px; height: 120px;
+}
+
+.carta.pokemon {
+    width: 111px; height: 111px;
 }
 
 .carta.amagada {
@@ -70,17 +83,23 @@ body {
     backface-visibility: hidden;
 }
 
-.darrera {
+.darrera.poker {
     background: #999 url(../images/deck.png) 0px -480px; /*cartes DECK*/
-    /*background: #999 url(../images/poker1.png) 0px -496px; /*cartes POKER1*/
 }
 
-.davant {
+.davant.poker {
     background: #efefef url(../images/deck.png);/*cartes DECK*/
-    /*background: #999 url(../images/poker1.png); /*cartes POKER1*/
     transform: rotate3d(0,1,0,-180deg);
 }
 
+.darrera.pokemon {
+    background: #999 url(../images/pokemon.jpg) -777px 0px;
+}
+
+.davant.pokemon {
+    background: #efefef url(../images/pokemon.jpg);
+    transform: rotate3d(0,1,0,-180deg);
+}
 
 .carta-girada .darrera {
     transform: rotate3d(0,1,0,180deg);
@@ -154,7 +173,13 @@ body {
     text-align: center;
 
     cursor: pointer;
+
+    transition: background-color ease-in-out .25s;
 }   
+
+.btn:hover {
+    background-color: #a82d00;
+}
 
 .dialogoMenu {
     width: fit-content !important;
@@ -183,56 +208,92 @@ body {
     font-weight: bold;
 }
 
+.menu-sel-deck {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    
+    font-size: 26px;
+    gap: .5rem;
+
+    margin-top: 1rem;
+}
+
+.menu-sel-deck > img {
+    width: 30px;
+}
+
+.menu-sel-deck > * {
+    filter: brightness(0%);
+    cursor: pointer;
+}
+
+.menu-sel-deck > .selected {
+    /* Generador de filtros de colores: https://codepen.io/sosuke/pen/Pjoqqp */
+    filter: invert(56%) sepia(99%) saturate(5705%) hue-rotate(360deg) brightness(100%) contrast(109%);
+}
+
 * {
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
 }
 .finestra{
     display: none;
-}
-.finestra.abrir{
     width: 100%;
     height: 100%;
     position: fixed;
+    top: 0px;
+    left: 0px;
     z-index: 100;
     text-align: center;
     justify-content:center;
     align-items: center;
-    display: flex;
-    padding: 5px;
+    padding: 10px;
     background-color: rgba(0,0,0,.5);
+}
+.finestra.abrir{
+    display: flex;
 }
 .contingut{
     background-color: white;
     margin: 20px;
-    img{
-        width: 80%;
-        padding: 5px;
-    }
-    h1{
-        margin: 10px;
-    }
+    padding: 1rem;
+    
     padding-bottom: 15px;
+    border-radius: 10px;
 }
-.novaPartida {
-    border: 0px solid black;
-    border-radius: 5px;
-    background-color:orangered;
-    color: white;
-    padding: 10px 15px;
-    font-size: 20px;
-    display: inline-block;
-    text-align: center;
-    cursor: pointer;
+
+.contingut > img {
+    width: 80%;
+    padding: 5px;
+}
+
+.contingut > h1 {
+    margin: 10px;
+}
+
+#estado {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #tiempo{
     display: none;
+    flex-direction: column;
+    padding: 50px;
 }
 #tiempo.iniciado{
     display: flex;
-    position: fixed;
-    padding: 50px;
-    flex-direction: column;
+}
+
+#tiempo > h4 {
+    margin: 0px;
+}
+
+#tiempo > h2 {
+    margin: 0px;
 }
  
 
